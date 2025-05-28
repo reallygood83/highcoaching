@@ -7,6 +7,7 @@ import { communityPosts } from '@/data/communityPosts';
 import { useAuth } from '@/contexts/AuthContext';
 import { ArrowLeft, Users, Heart, MessageCircle, Share2, MoreHorizontal, Image, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import NextImage from 'next/image';
 
 export default function CommunityDetailPage() {
   const params = useParams();
@@ -99,9 +100,11 @@ export default function CommunityDetailPage() {
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <img
+            <NextImage
               src={community.imageUrl}
               alt={community.name}
+              width={48}
+              height={48}
               className="w-12 h-12 rounded-lg object-cover"
             />
             <div className="flex-1">
@@ -119,9 +122,11 @@ export default function CommunityDetailPage() {
         {/* Community Info */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="flex items-start space-x-4">
-            <img
+            <NextImage
               src={expert.imageUrl}
               alt={expert.name}
+              width={64}
+              height={64}
               className="w-16 h-16 rounded-full"
             />
             <div className="flex-1">
@@ -136,9 +141,11 @@ export default function CommunityDetailPage() {
         {user && (
           <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
             <div className="flex space-x-3">
-              <img
+              <NextImage
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
                 alt={user.name}
+                width={40}
+                height={40}
                 className="w-10 h-10 rounded-full"
               />
               <div className="flex-1">
@@ -151,7 +158,7 @@ export default function CommunityDetailPage() {
                 />
                 <div className="flex justify-between items-center mt-3">
                   <button className="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
-                    <Image className="h-5 w-5 mr-2" />
+                    <Image className="h-5 w-5 mr-2" aria-label="사진 추가" />
                     사진 추가
                   </button>
                   <button
@@ -182,9 +189,11 @@ export default function CommunityDetailPage() {
               <div className="p-6 pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex space-x-3">
-                    <img
+                    <NextImage
                       src={post.authorImage}
                       alt={post.authorName}
+                      width={48}
+                      height={48}
                       className="w-12 h-12 rounded-full"
                     />
                     <div>
@@ -209,9 +218,11 @@ export default function CommunityDetailPage() {
               {/* Post Image */}
               {post.imageUrl && (
                 <div className="px-6 pb-4">
-                  <img
+                  <NextImage
                     src={post.imageUrl}
                     alt="게시물 이미지"
+                    width={600}
+                    height={400}
                     className="w-full rounded-lg"
                   />
                 </div>
@@ -248,9 +259,11 @@ export default function CommunityDetailPage() {
                   <div className="space-y-3 mt-4">
                     {post.comments.map((comment) => (
                       <div key={comment.id} className="flex space-x-3">
-                        <img
+                        <NextImage
                           src={comment.authorImage}
                           alt={comment.authorName}
+                          width={32}
+                          height={32}
                           className="w-8 h-8 rounded-full"
                         />
                         <div className="flex-1">
@@ -274,9 +287,11 @@ export default function CommunityDetailPage() {
               {user && (
                 <div className="px-6 pb-4 border-t border-gray-100">
                   <div className="flex space-x-3 mt-4">
-                    <img
+                    <NextImage
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
                       alt={user.name}
+                      width={32}
+                      height={32}
                       className="w-8 h-8 rounded-full"
                     />
                     <div className="flex-1">

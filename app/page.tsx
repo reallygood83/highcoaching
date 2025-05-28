@@ -3,7 +3,8 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { experts, courses, categories } from '@/data/mockData';
 import Link from 'next/link';
-import { ArrowRight, Users, BookOpen, Award, Star } from 'lucide-react';
+import NextImage from 'next/image';
+import { ArrowRight, Users, BookOpen, Award } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -196,14 +197,16 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {recommendedExperts.map((expert, index) => (
+            {recommendedExperts.map((expert) => (
               <div key={expert.id} className="group">
                 <div className="bg-white rounded-2xl border border-gray-100 hover:border-blue-200 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="text-center">
                     <div className="relative inline-block mb-6">
-                      <img
+                      <NextImage
                         src={expert.imageUrl}
                         alt={expert.name}
+                        width={96}
+                        height={96}
                         className="w-24 h-24 rounded-full object-cover mx-auto ring-4 ring-blue-100 group-hover:ring-blue-200 transition-all duration-300"
                       />
                       <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs px-2 py-1 rounded-full">
@@ -266,13 +269,15 @@ export default function Home() {
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {recommendedCourses.map((course, index) => (
+            {recommendedCourses.map((course) => (
               <div key={course.id} className="group">
                 <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                   <div className="relative">
-                    <img
+                    <NextImage
                       src={course.imageUrl}
                       alt={course.title}
+                      width={400}
+                      height={224}
                       className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">
@@ -297,9 +302,11 @@ export default function Home() {
                     </div>
                     
                     <div className="flex items-center space-x-3 mb-6">
-                      <img
+                      <NextImage
                         src={course.instructor.imageUrl}
                         alt={course.instructor.name}
+                        width={40}
+                        height={40}
                         className="w-10 h-10 rounded-full"
                       />
                       <div>
@@ -433,9 +440,11 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
-                <img
+                <NextImage
                   src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face"
                   alt="이선미"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
@@ -444,7 +453,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                "AI 교육 연수를 통해 수업의 질이 정말 향상되었어요. 학생들도 더 적극적으로 참여하고, 저 역시 더 효과적인 교육을 할 수 있게 되었습니다."
+                &ldquo;AI 교육 연수를 통해 수업의 질이 정말 향상되었어요. 학생들도 더 적극적으로 참여하고, 저 역시 더 효과적인 교육을 할 수 있게 되었습니다.&rdquo;
               </p>
               <div className="flex text-yellow-400 mt-4">
                 {'★'.repeat(5)}
@@ -452,9 +461,11 @@ export default function Home() {
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
-                <img
+                <NextImage
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
                   alt="박준호"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
@@ -463,7 +474,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                "전문가들과의 네트워킹이 정말 유용했어요. 현장에서 바로 적용할 수 있는 실질적인 조언들을 많이 얻었습니다. 9개 뱃지 모두 획득했어요!"
+                &ldquo;전문가들과의 네트워킹이 정말 유용했어요. 현장에서 바로 적용할 수 있는 실질적인 조언들을 많이 얻었습니다. 9개 뱃지 모두 획득했어요!&rdquo;
               </p>
               <div className="flex text-yellow-400 mt-4">
                 {'★'.repeat(5)}
@@ -471,9 +482,11 @@ export default function Home() {
             </div>
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
-                <img
+                <NextImage
                   src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
                   alt="김영은"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full mr-4"
                 />
                 <div>
@@ -482,7 +495,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                "무료로 이런 양질의 연수를 받을 수 있다는 게 정말 놀라워요. 커뮤니티에서 다른 선생님들과 소통하며 많은 영감을 받고 있습니다."
+                &ldquo;무료로 이런 양질의 연수를 받을 수 있다는 게 정말 놀라워요. 커뮤니티에서 다른 선생님들과 소통하며 많은 영감을 받고 있습니다.&rdquo;
               </p>
               <div className="flex text-yellow-400 mt-4">
                 {'★'.repeat(5)}
@@ -519,10 +532,10 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">서비스</h4>
               <ul className="space-y-2">
-                <li><a href="/experts" className="text-gray-400 hover:text-white transition-colors">전문가 찾기</a></li>
-                <li><a href="/courses" className="text-gray-400 hover:text-white transition-colors">연수 프로그램</a></li>
-                <li><a href="/communities" className="text-gray-400 hover:text-white transition-colors">커뮤니티</a></li>
-                <li><a href="/my-badges" className="text-gray-400 hover:text-white transition-colors">내 뱃지</a></li>
+                <li><Link href="/experts" className="text-gray-400 hover:text-white transition-colors">전문가 찾기</Link></li>
+                <li><Link href="/courses" className="text-gray-400 hover:text-white transition-colors">연수 프로그램</Link></li>
+                <li><Link href="/communities" className="text-gray-400 hover:text-white transition-colors">커뮤니티</Link></li>
+                <li><Link href="/my-badges" className="text-gray-400 hover:text-white transition-colors">내 뱃지</Link></li>
               </ul>
             </div>
             <div>
