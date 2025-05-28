@@ -516,18 +516,10 @@ export default function Home() {
                 </div>
                 <span className="text-xl font-bold">하이코칭</span>
               </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed">
                 교사 전문성 개발을 위한 혁신적인 플랫폼<br />
                 전국의 교육 전문가들과 함께 성장하세요
               </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  이용약관
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  개인정보처리방침
-                </a>
-              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">서비스</h4>
