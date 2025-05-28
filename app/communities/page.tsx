@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { communities, experts, categories } from '@/data/mockData';
 import { useAuth } from '@/contexts/AuthContext';
 import { Users, Search, Filter } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CommunitiesPage() {
   const { user } = useAuth();
@@ -124,9 +125,12 @@ export default function CommunitiesPage() {
                     </div>
                   )}
 
-                  <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                    커뮤니티 가입
-                  </button>
+                  <Link
+                    href={`/communities/${community.id}`}
+                    className="block w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-center"
+                  >
+                    커뮤니티 참여하기
+                  </Link>
                 </div>
               </div>
             );

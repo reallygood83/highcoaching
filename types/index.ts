@@ -59,3 +59,28 @@ export interface Community {
   category: string;
   imageUrl: string;
 }
+
+export interface Post {
+  id: string;
+  authorId: string;
+  authorName: string;
+  authorImage: string;
+  authorTitle?: string;
+  content: string;
+  imageUrl?: string;
+  createdAt: Date;
+  likes: number;
+  comments: Comment[];
+  isLiked: boolean;
+}
+
+export interface Comment {
+  id: string;
+  authorId: string;
+  authorName: string;
+  authorImage: string;
+  content: string;
+  createdAt: Date;
+  likes: number;
+  isLiked: boolean;
+}
