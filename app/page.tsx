@@ -1,103 +1,211 @@
-import Image from "next/image";
+'use client';
+
+import { useAuth } from '@/contexts/AuthContext';
+import { experts, courses, categories } from '@/data/mockData';
+import Link from 'next/link';
+import { ArrowRight, Users, BookOpen, Award, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { user } = useAuth();
+  const [recommendedExperts, setRecommendedExperts] = useState(experts.slice(0, 3));
+  const [recommendedCourses, setRecommendedCourses] = useState(courses.slice(0, 3));
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    if (user?.interests && user.interests.length > 0) {
+      // Filter experts and courses based on user interests
+      const filteredExperts = experts.filter(expert =>
+        expert.specialties.some(specialty =>
+          user.interests.some(interest =>
+            categories.find(cat => cat.id === interest)?.name === specialty
+          )
+        )
+      );
+      const filteredCourses = courses.filter(course =>
+        user.interests.includes(course.category)
+      );
+
+      setRecommendedExperts(filteredExperts.slice(0, 3));
+      setRecommendedCourses(filteredCourses.slice(0, 3));
+    }
+  }, [user]);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              교사 전문성 개발의 새로운 시작
+            </h1>
+            <p className="text-xl mb-8 text-blue-100">
+              전국의 교육 전문가들과 함께 성장하세요
+            </p>
+            {!user && (
+              <Link
+                href="/register"
+                className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                지금 시작하기
+              </Link>
+            )}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">전문가 네트워크</h3>
+              <p className="text-gray-600">
+                전국의 교육 전문가들과 연결되어 지식을 공유하고 협력하세요
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">체계적인 연수</h3>
+              <p className="text-gray-600">
+                검증된 전문가의 연수 프로그램으로 실무 역량을 강화하세요
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">전문성 인증</h3>
+              <p className="text-gray-600">
+                연수 이수 후 디지털 뱃지로 전문성을 인증받으세요
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recommended Experts */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">
+              {user?.interests?.length ? '추천 전문가' : '인기 전문가'}
+            </h2>
+            <Link
+              href="/experts"
+              className="flex items-center text-blue-600 hover:text-blue-700"
+            >
+              전체보기 <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {recommendedExperts.map((expert) => (
+              <div key={expert.id} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="flex items-start space-x-4">
+                  <img
+                    src={expert.imageUrl}
+                    alt={expert.name}
+                    className="w-16 h-16 rounded-full"
+                  />
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg">{expert.name}</h3>
+                    <p className="text-gray-600 text-sm">{expert.title}</p>
+                    <p className="text-gray-500 text-sm">{expert.organization}</p>
+                    <div className="flex items-center mt-2">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span className="text-sm ml-1">{expert.rating} ({expert.reviewCount})</span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {expert.specialties.slice(0, 2).map((specialty) => (
+                        <span
+                          key={specialty}
+                          className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recommended Courses */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">
+              {user?.interests?.length ? '추천 연수' : '인기 연수'}
+            </h2>
+            <Link
+              href="/courses"
+              className="flex items-center text-blue-600 hover:text-blue-700"
+            >
+              전체보기 <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {recommendedCourses.map((course) => (
+              <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <img
+                  src={course.imageUrl}
+                  alt={course.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="font-semibold text-lg mb-2">{course.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {course.description}
+                  </p>
+                  <div className="flex items-center justify-between text-sm text-gray-500">
+                    <span>{course.instructor.name}</span>
+                    <span>{course.duration}</span>
+                  </div>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-lg font-semibold text-blue-600">
+                      ₩{course.price.toLocaleString()}
+                    </span>
+                    <Link
+                      href={`/courses/${course.id}`}
+                      className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                    >
+                      자세히 보기
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      {user?.badges && user.badges.length >= 3 && !user.isExpert && (
+        <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              축하합니다! 예비 전문가 등록 자격을 획득하셨습니다 🎉
+            </h2>
+            <p className="text-xl mb-8 text-purple-100">
+              3개의 뱃지를 획득하셨습니다. 이제 예비 전문가로 등록할 수 있습니다.
+            </p>
+            <Link
+              href="/expert-registration"
+              className="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              예비 전문가 등록하기
+            </Link>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
