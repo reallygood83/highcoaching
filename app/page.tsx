@@ -506,45 +506,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">하</span>
-                </div>
-                <span className="text-xl font-bold">하이코칭</span>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                교사 전문성 개발을 위한 혁신적인 플랫폼<br />
-                전국의 교육 전문가들과 함께 성장하세요
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">서비스</h4>
-              <ul className="space-y-2">
-                <li><Link href="/experts" className="text-gray-400 hover:text-white transition-colors">전문가 찾기</Link></li>
-                <li><Link href="/courses" className="text-gray-400 hover:text-white transition-colors">연수 프로그램</Link></li>
-                <li><Link href="/communities" className="text-gray-400 hover:text-white transition-colors">커뮤니티</Link></li>
-                <li><Link href="/my-badges" className="text-gray-400 hover:text-white transition-colors">내 뱃지</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">지원</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">고객센터</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">공지사항</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">문의하기</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">
-              © 2025 디지털 전문교원 아카데미 하이코칭 3분과. All rights reserved.
-            </p>
-          </div>
+      <footer className="bg-gray-900 text-white py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-400">
+            © 2025 디지털 전문교원 아카데미 하이코칭 3분과. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
