@@ -15,7 +15,7 @@ export default function MyBadgesPage() {
     return null;
   }
 
-  const totalBadges = 9; // Total possible badges
+  const totalBadges = 8; // Total possible badges
   const earnedBadges = user.badges.length;
   const progress = (earnedBadges / totalBadges) * 100;
 
