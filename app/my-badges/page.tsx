@@ -15,7 +15,7 @@ export default function MyBadgesPage() {
     return null;
   }
 
-  const totalBadges = 8; // Total possible badges
+  const totalBadges = 9; // Total possible badges
   const earnedBadges = user.badges.length;
   const progress = (earnedBadges / totalBadges) * 100;
 
@@ -42,12 +42,70 @@ export default function MyBadgesPage() {
             </div>
           </div>
 
-          {/* Special Achievement Notice */}
-          {earnedBadges >= 3 && !user.isExpert && (
+          {/* Special Achievement Notices */}
+          {earnedBadges === 9 && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-gradient-to-r from-yellow-100 via-orange-100 to-red-100 border-2 border-yellow-400 rounded-xl p-6 mb-4 relative overflow-hidden"
+            >
+              <motion.div
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200/30 to-transparent"
+                style={{
+                  backgroundSize: '200% 100%',
+                }}
+              />
+              <div className="relative z-10 text-center">
+                <motion.div
+                  animate={{
+                    rotate: [0, 10, -10, 10, 0],
+                    scale: [1, 1.1, 1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="text-6xl mb-4"
+                >
+                  🏆
+                </motion.div>
+                <h3 className="text-2xl font-bold text-yellow-900 mb-2">
+                  완벽한 마스터! 모든 뱃지 획득 완료!
+                </h3>
+                <p className="text-yellow-800 text-lg mb-4">
+                  축하합니다! 하이코칭의 모든 연수를 완료하여 교육 전문가가 되셨습니다!
+                </p>
+                <div className="flex justify-center space-x-4">
+                  {!user.isExpert && (
+                    <Link
+                      href="/expert-registration"
+                      className="bg-yellow-600 text-white px-6 py-3 rounded-lg hover:bg-yellow-700 transition-colors font-semibold"
+                    >
+                      🎓 마스터 전문가 등록하기
+                    </Link>
+                  )}
+                  <button className="bg-white text-yellow-700 border border-yellow-400 px-6 py-3 rounded-lg hover:bg-yellow-50 transition-colors font-semibold">
+                    🎯 성과 공유하기
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+          
+          {earnedBadges >= 3 && earnedBadges < 9 && !user.isExpert && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-300 rounded-lg p-4"
+              className="bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-300 rounded-lg p-4 mb-4"
             >
               <div className="flex items-center justify-between">
                 <div>

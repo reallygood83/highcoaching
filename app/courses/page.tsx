@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { courses, categories } from '@/data/mockData';
 import { useAuth } from '@/contexts/AuthContext';
-import { Search, Filter, Clock, User, DollarSign } from 'lucide-react';
+import { Search, Filter, Clock, User } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CoursesPage() {
@@ -133,19 +133,20 @@ export default function CoursesPage() {
                     <Clock className="h-4 w-4 mr-2" />
                     <span className="text-sm">{course.duration}</span>
                   </div>
-                  <div className="flex items-center text-gray-500">
-                    <DollarSign className="h-4 w-4 mr-2" />
-                    <span className="text-sm">₩{course.price.toLocaleString()}</span>
-                  </div>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-500">
-                    수료 시 뱃지 발급
-                  </span>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs text-gray-500">
+                      수료 시 뱃지 발급
+                    </span>
+                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                      무료
+                    </span>
+                  </div>
                   <Link
                     href={`/courses/${course.id}`}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                    className="block w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors text-center"
                   >
                     자세히 보기
                   </Link>

@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { courses, badges } from '@/data/mockData';
 import { useAuth } from '@/contexts/AuthContext';
 import BadgeAnimation from '@/components/BadgeAnimation';
-import { Clock, User, DollarSign, CheckCircle, Award, BookOpen, Users } from 'lucide-react';
+import { Clock, User, CheckCircle, Award, BookOpen, Users } from 'lucide-react';
 
 export default function CourseDetailPage() {
   const params = useParams();
@@ -93,9 +93,8 @@ export default function CourseDetailPage() {
                 <Clock className="h-5 w-5 mr-2" />
                 <span>{course.duration}</span>
               </div>
-              <div className="flex items-center text-gray-600">
-                <DollarSign className="h-5 w-5 mr-2" />
-                <span>₩{course.price.toLocaleString()}</span>
+              <div className="flex items-center text-green-600">
+                <span className="bg-green-100 px-3 py-1 rounded-full text-sm font-medium">무료 연수</span>
               </div>
             </div>
 

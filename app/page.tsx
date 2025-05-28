@@ -169,13 +169,16 @@ export default function Home() {
                     <span>{course.instructor.name}</span>
                     <span>{course.duration}</span>
                   </div>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-lg font-semibold text-blue-600">
-                      ₩{course.price.toLocaleString()}
-                    </span>
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">
+                        무료
+                      </span>
+                      <span className="text-xs text-gray-500">수료 시 뱃지 발급</span>
+                    </div>
                     <Link
                       href={`/courses/${course.id}`}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                      className="block w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors text-center"
                     >
                       자세히 보기
                     </Link>
@@ -188,14 +191,45 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      {user?.badges && user.badges.length >= 3 && !user.isExpert && (
+      {user?.badges && user.badges.length === 9 && (
+        <section className="py-16 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-red-500/20 animate-pulse"></div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="text-8xl mb-6 animate-bounce">🏆</div>
+            <h2 className="text-4xl font-bold mb-4">
+              완벽한 마스터! 모든 뱃지 획득 완료! 🎉
+            </h2>
+            <p className="text-xl mb-8 text-yellow-100">
+              9개의 모든 뱃지를 획득하여 하이코칭 교육 전문가가 되셨습니다!
+            </p>
+            <div className="flex justify-center space-x-4">
+              {!user.isExpert && (
+                <Link
+                  href="/expert-registration"
+                  className="inline-block bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  🎓 마스터 전문가 등록하기
+                </Link>
+              )}
+              <Link
+                href="/my-badges"
+                className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors"
+              >
+                🏆 내 뱃지 컬렉션 보기
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+      
+      {user?.badges && user.badges.length >= 3 && user.badges.length < 9 && !user.isExpert && (
         <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-4">
               축하합니다! 예비 전문가 등록 자격을 획득하셨습니다 🎉
             </h2>
             <p className="text-xl mb-8 text-purple-100">
-              3개의 뱃지를 획득하셨습니다. 이제 예비 전문가로 등록할 수 있습니다.
+              {user.badges.length}개의 뱃지를 획득하셨습니다. 이제 예비 전문가로 등록할 수 있습니다.
             </p>
             <Link
               href="/expert-registration"

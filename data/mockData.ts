@@ -155,6 +155,18 @@ export const courses: Course[] = [
     imageUrl: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=800&h=600&fit=crop&crop=center',
     badgeId: 'badge8',
   },
+  {
+    id: '9',
+    title: '교육 데이터 분석과 맞춤형 학습',
+    description: '학습 데이터를 분석하여 개별 학생에게 최적화된 교육을 제공하는 방법을 학습합니다.',
+    instructor: experts[0],
+    duration: '8주',
+    level: '고급',
+    category: 'ai-education',
+    price: 270000,
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center',
+    badgeId: 'badge9',
+  },
 ];
 
 export const communities: Community[] = [
@@ -251,5 +263,13 @@ export const badges: Badge[] = [
     imageUrl: '/badges/inclusive-educator.svg',
     earnedAt: new Date(),
     courseId: '8',
+  },
+  {
+    id: 'badge9',
+    name: '데이터 기반 교육 전문가',
+    description: '교육 데이터 분석을 통한 맞춤형 학습의 전문가',
+    imageUrl: '/badges/data-educator.svg',
+    earnedAt: new Date(),
+    courseId: '9',
   },
 ];
