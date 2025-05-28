@@ -441,7 +441,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
                 <NextImage
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face"
+                  src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&h=400&fit=crop&crop=face"
                   alt="이선미"
                   width={48}
                   height={48}
@@ -462,7 +462,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
                 <NextImage
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  src="https://images.unsplash.com/photo-1614644147724-2d4785d69962?w=400&h=400&fit=crop&crop=face"
                   alt="박준호"
                   width={48}
                   height={48}
@@ -483,7 +483,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl p-8">
               <div className="flex items-center mb-6">
                 <NextImage
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
+                  src="https://images.unsplash.com/photo-1611432579402-7037e3e2ee4e?w=400&h=400&fit=crop&crop=face"
                   alt="김영은"
                   width={48}
                   height={48}
