@@ -158,7 +158,7 @@ export const courses: Course[] = [
     level: '초급',
     category: 'creative-education',
     price: 150000,
-    imageUrl: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop&crop=center',
+    imageUrl: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=600&fit=crop&crop=center',
     badgeId: 'badge3',
   },
   {
